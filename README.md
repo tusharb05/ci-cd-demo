@@ -1,10 +1,8 @@
 # 🚀 Python CI/CD Pipeline with GitHub Actions & Pages
 
-![CI/CD Banner](https://via.placeholder.com/1200x400.png?text=CI%2FCD+Pipeline+Banner)
-
 ## 📌 Project Overview
 
-This project demonstrates a streamlined CI/CD pipeline for a Python application using GitHub Actions. It emphasizes code quality through linting and formatting checks and automates the deployment of static documentation to GitHub Pages upon merging to the `main` branch.
+This project demonstrates a streamlined CI/CD pipeline for a Python application using GitHub Actions. It emphasizes code quality through linting and formatting checks and automates the deployment of static documentation to GitHub Pages upon pushing to the `main` branch.
 
 ---
 
@@ -20,11 +18,11 @@ This project demonstrates a streamlined CI/CD pipeline for a Python application 
 
 ## ⚙️ CI/CD Workflow
 
-![Workflow Diagram](https://via.placeholder.com/800x400.png?text=CI%2FCD+Workflow+Diagram)
+![Workflow Diagram](./assets/flowchart.png)
 
 1. **Continuous Integration (CI):**
 
-   - Triggered on every `push` or `pull_request`.
+   - Triggered on every `push`.
    - Sets up Python environment.
    - Installs dependencies from `requirements.txt`.
    - Runs linting and formatting checks.
@@ -50,9 +48,9 @@ This project demonstrates a streamlined CI/CD pipeline for a Python application 
 ├── README.md
 └── .github/
 └── workflows/
-├── ci.yml
-├── cd.yml
-└── reusable-notify.yml
+  ├── ci.yml
+  ├── cd.yml
+  └── reusable-notify.yml
 ```
 
 ---
@@ -71,11 +69,12 @@ This project demonstrates a streamlined CI/CD pipeline for a Python application 
 
 ### CI Workflow Success
 
-![CI Success](https://via.placeholder.com/600x300.png?text=CI+Workflow+Success)
+![CI Success](./assets/ci_success.png)
 
 ### Deployed Documentation
 
-![Deployed Docs](https://via.placeholder.com/600x300.png?text=GitHub+Pages+Deployment)
+![Deployed Docs 1](./assets/cd_success_1.png)
+![Deployed Docs 2](./assets/cd_success_2.png)
 
 ---
 
@@ -83,7 +82,7 @@ This project demonstrates a streamlined CI/CD pipeline for a Python application 
 
 Upon successful deployment, a notification is sent via the configured channel.
 
-![Notification Example](https://via.placeholder.com/600x100.png?text=Deployment+Notification)
+![Notification Example](./assets/notify.png)
 
 ---
 
