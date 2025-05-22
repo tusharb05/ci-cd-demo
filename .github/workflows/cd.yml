@@ -1,5 +1,10 @@
 name: CD Workflow
 
+permissions:
+  contents: read        
+  pages: write          # to deploy to GitHub Pages
+  id-token: write       # to allow OIDC token issuance
+
 on:
   workflow_run:
     workflows: ["CI Workflow"]
