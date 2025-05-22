@@ -1,0 +1,62 @@
+name: CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-docs:
+    name: Check if docs exist
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify docs/index.html exist
+        run: |
+          if [ ! -f docs/index.html ]; then
+            echo "docs/index.html not found!"
+            exit 1
+          fi
+          echo "
+          docs/index.html found."
+
+  deploy-docs:
+    name: Deploy docs on Github Pages
+    needs: check-docs
+    runs-on: ubuntu-latest
+
+    environment:
+      name: production
+      url: ${{steps.deploy-pages.outputs.page_url}}
+
+    concurrency:
+      group: "pages-deploy"
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifacts@v3
+        with:
+          path: docs/
+
+      - name: Deploy pages
+        id: deploy-pages
+        uses: actions/deploy-pages@v2
+
+  notify:
+    name: Notify on Deployment Result
+    if: always()
+    needs: deploy-docs
+    uses: ./.github/workflows/reusable-notify.yml
+    with:
+      status: ${{ needs.deploy-docs.result }}
+      message: "Deployment to GitHub Pages completed with status: ${{ needs.deploy-docs.result }}"

@@ -1,0 +1,18 @@
+name: Reusable notification workflow
+
+on:
+  workflow_call:
+    inputs:
+      status:
+        required: true
+        type: string
+      message:
+        required: true
+        type: string
+jobs:
+  notify:
+    name: Notify about deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify
+        run: echo "[${{ inputs.status }}] - ${{ inputs.message }}"
