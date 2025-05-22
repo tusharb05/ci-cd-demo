@@ -92,28 +92,3 @@ The `reusable-notify.yml` workflow is designed to send customizable notification
 
 ---
 
-## 🚀 Getting Started
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   ```
-
-2. **Navigate to the project directory:**
-
-   ```bash
-   cd your-repo-name
-   ```
-
-3. **Install dependencies:**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run linting and formatting checks:**
-   ```bash
-   flake8 app/
-   black --check app/
-   ```
